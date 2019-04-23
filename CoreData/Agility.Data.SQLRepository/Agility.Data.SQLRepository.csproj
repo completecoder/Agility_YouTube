@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2352C1BA-FB82-4D65-B9A8-88DE4DC19366}</ProjectGuid>
+    <ProjectGuid>{D2A5B783-16DD-4894-996F-D2821675C1AC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Agility.CoreData.Models</RootNamespace>
-    <AssemblyName>Agility.CoreData.Models</AssemblyName>
+    <RootNamespace>Agility.Data.SQLRepository</RootNamespace>
+    <AssemblyName>Agility.Data.SQLRepository</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -31,7 +31,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -41,18 +48,33 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Application.cs" />
-    <Compile Include="DataModel.cs" />
-    <Compile Include="DataProperty.cs" />
+    <Compile Include="DataContext.cs" />
+    <Compile Include="Migrations\201904231005108_Initial.cs" />
+    <Compile Include="Migrations\201904231005108_Initial.Designer.cs">
+      <DependentUpon>201904231005108_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Schema.cs" />
-    <Compile Include="SchemaProperty.cs" />
+    <Compile Include="SQLRepository.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Agility.CoreData.Models\Agility.CoreData.Models.csproj">
+      <Project>{2352c1ba-fb82-4d65-b9a8-88de4dc19366}</Project>
+      <Name>Agility.CoreData.Models</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Agility.Core\Agility.Core.csproj">
-      <Project>{182AE553-01C8-4B50-BB6D-6B69CDCFE525}</Project>
+      <Project>{182ae553-01c8-4b50-bb6d-6b69cdcfe525}</Project>
       <Name>Agility.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201904231005108_Initial.resx">
+      <DependentUpon>201904231005108_Initial.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
