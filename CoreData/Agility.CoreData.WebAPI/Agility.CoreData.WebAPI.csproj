@@ -124,7 +124,11 @@
     <Compile Include="App_Start\UnityWebApiActivator.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\ApplicationsController.cs" />
-    <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\DataModelController.cs" />
+    <Compile Include="Controllers\DataPropertyController.cs" />
+    <Compile Include="Controllers\SchemaController.cs" />
+    <Compile Include="Controllers\SchemaPropertyController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

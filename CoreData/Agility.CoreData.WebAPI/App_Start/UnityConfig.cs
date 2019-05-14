@@ -46,6 +46,10 @@ namespace Agility.CoreData.WebAPI
             // TODO: Register your type's mappings here.
             // container.RegisterType<IProductRepository, ProductRepository>();
             container.RegisterType<IRepository<Application>, SQLRepository<Application>>();
+            container.RegisterType<IRepository<DataModel>, SQLRepository<DataModel>>();
+            container.RegisterType<IRepository<DataProperty>, SQLRepository<DataProperty>>();
+            container.RegisterType<IRepository<Schema>, SQLRepository<Schema>>();
+            container.RegisterType<IRepository<SchemaProperty>, SQLRepository<SchemaProperty>>();
         }
     }
 }
