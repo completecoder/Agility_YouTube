@@ -22,6 +22,12 @@ namespace Agility.Data.SQLRepository
 
         }
 
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<DataContext, Configuration>());
+            base.OnModelCreating(modelBuilder);
+        }
+
 
 
         //for each model that needs persisting to the database we need a 
