@@ -1,4 +1,5 @@
 ﻿using Agility.CoreData.Models;
+using Agility.Data.SQLRepository.Migrations;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
