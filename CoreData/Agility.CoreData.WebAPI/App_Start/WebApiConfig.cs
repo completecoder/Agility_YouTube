@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using Newtonsoft.Json.Serialization;
 
 namespace Agility.CoreData.WebAPI
 {
@@ -19,6 +20,15 @@ namespace Agility.CoreData.WebAPI
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            Configure(config);
+        }
+
+        private static void Configure(HttpConfiguration config) {
+            config.Formatters.Remove(config.Formatters.XmlFormatter);
+
+            var json = config.Formatters.JsonFormatter;
+            json.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
         }
     }
 }
