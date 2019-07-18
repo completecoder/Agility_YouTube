@@ -1,4 +1,5 @@
 ﻿using Agility.CoreData.Models;
+using Agility.Data.SQLRepository.Migrations;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -20,6 +21,12 @@ namespace Agility.Data.SQLRepository
 
 
 
+        }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<DataContext, Configuration>());
+            base.OnModelCreating(modelBuilder);
         }
 
 
